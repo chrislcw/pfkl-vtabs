@@ -1,0 +1,27 @@
+{
+  "name": "pfkl-vtabs",
+  "version": "1.0.4",
+  "description": "Simple tabs plugin for jQuery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrislcw/pfkl-vtabs.git"
+  },
+  "keywords": [
+    "jquery",
+    "tab",
+    "plugin"
+  ],
+  "author": "Chris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrislcw/pfkl-vtabs/issues"
+  },
+  "homepage": "https://github.com/chrislcw/pfkl-vtabs#readme",
+  "peerDependencies": {
+    "jquery": ">=3.6.0"
+  }
+}
