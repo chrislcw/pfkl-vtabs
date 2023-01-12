@@ -1,6 +1,8 @@
-# Usage
+# A simple jQuery tab plugin
 
-## JS codes
+## Usage
+
+### JS codes
 
 ```
 import "pfkl-vtabs/vtabs/vtabs.min.js";
@@ -13,7 +15,7 @@ $('your-element').vtabs({
 })
 ```
 
-## HTML codes
+### HTML codes
 
 ```
 <div class="your-element">
