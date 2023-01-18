@@ -33,7 +33,7 @@ $.fn.vTabs = function(s = null) {
   }
 
   function init() {
-    const vW = $(window).width();
+    const vW = window.innerWidth;
 
     if (settings.mobileOnly && vW > settings.mobileViewportWidth) {
       return;
@@ -121,35 +121,29 @@ $.fn.vTabs = function(s = null) {
     return h;
   }
 
-  let vTabsTimeout;
-
   $(window).on('resize', function() {
-    clearTimeout(vTabsTimeout);
+    const vW = window.innerWidth;
 
-    vTabsTimeout = setTimeout(() => {
-      const vW = $(window).width();
-
-      if (settings.mobileOnly && vW > settings.mobileViewportWidth) {
-        if (initialized) {
-          kill();
-          return;
-        }
-      } else {
-        if (!initialized) {
-          init();
-          return;
-        }
+    if (settings.mobileOnly && vW > settings.mobileViewportWidth) {
+      if (initialized) {
+        kill();
+        return;
       }
-
-      if (settings.variableHeight) {
-        const activeTab = elm.find('.vtab-content.active');
-    
-        cW.css('height', activeTab.outerHeight());
-      } else {
-        maxContentHeight = getMaxContentHeight(tC);
-        cW.css('height', maxContentHeight);
+    } else {
+      if (!initialized) {
+        init();
+        return;
       }
-    }, 10);
+    }
+
+    if (settings.variableHeight) {
+      const activeTab = elm.find('.vtab-content.active');
+  
+      cW.css('height', activeTab.outerHeight());
+    } else {
+      maxContentHeight = getMaxContentHeight(tC);
+      cW.css('height', maxContentHeight);
+    }
   });
 
   init();
