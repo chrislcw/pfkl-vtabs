@@ -7,7 +7,7 @@
 ```
 import "pfkl-vtabs/vtabs/vtabs.min.js";
 
-$('your-element').vtabs({
+$('.your-element').vtabs({
   'hover': false,
   'mobileOnly': false,
   'variableHeight': true,
