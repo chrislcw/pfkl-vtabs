@@ -1,6 +1,6 @@
 {
   "name": "pfkl-vtabs",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple tabs plugin for jQuery",
   "main": "index.js",
   "scripts": {

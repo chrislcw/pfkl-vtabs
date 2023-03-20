@@ -16,21 +16,42 @@ $.fn.vTabs = function(s = null) {
     'mobileOnly': false,
     'variableHeight': true,
     'mobileViewportWidth': 639,
+    'mutationSpeed': 300,
   };
+
+  cW.css('overflow', 'hidden');
 
   if (s !== null) {
     $.each(s, function( key, value ) {
-      console.log('key', key);
-
       settings[key] = value;
     });
   }
 
-  console.log('settings', settings);
-
   if (settings.hover) {
     ux = 'mouseenter';
   }
+
+  var observer = new MutationObserver(function(mutations) {
+    // Loop through the mutations
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+        const activeTab = elm.find('.vtab-content.active');
+
+        setTimeout(() => {
+          const newHeight = activeTab.outerHeight();
+
+          if (settings.variableHeight) {
+            cW.css('height', newHeight);
+          } else {
+            if (newHeight > maxContentHeight) {
+              maxContentHeight = newHeight;
+              cW.css('height', maxContentHeight);
+            }
+          }
+        }, settings.mutationSpeed);
+      }
+    });
+  });
 
   function init() {
     const vW = window.innerWidth;
@@ -51,6 +72,8 @@ $.fn.vTabs = function(s = null) {
       tc.css('width', '100%');
       tc.css('top', '0');
       tc.css('left', '0');
+
+      observer.observe(tc[0], { attributes: true, attributeFilter: ['style'], subtree: true });
     });
   
     maxContentHeight = getMaxContentHeight(tC);

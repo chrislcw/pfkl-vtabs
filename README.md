@@ -12,6 +12,7 @@ $('.your-element').vtabs({
   'mobileOnly': false,
   'variableHeight': true,
   'mobileViewportWidth': 639,
+  'mutationSpeed': 300,
 })
 ```
 
@@ -29,3 +30,9 @@ $('.your-element').vtabs({
   </div>
 </div>
 ```
+
+### Change log
+
+**v1.0.9**
+Added new settings param `mutationSpeed` for height mutating child elements in the tab content.
+Default value is `300`. Please match the transition timing value of any child elements in the tab content.
